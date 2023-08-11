@@ -1,0 +1,55 @@
+<div id="header_wrap">
+    <div id="header" class="clearfix">
+        <div class="header_first_wrap">
+            <div class="header_first_inner">
+                <div id="logo_area">
+                    <a href="{{ url('homepage') }}"><img src="{{ asset('assets/img/common/logo.png') }}" alt="{{ BaseInfo.shopname }}" /></a>
+                </div>
+                <div id="header_utility">
+                    <div id="headerInternalColumn">
+                    </div>
+                    <div class="header_first_right">
+                        <div class="sns_area">
+                           <a href="https://twitter.com/karakonya_ec" target="_blank"><i class="fab fa-twitter"></i></a>
+                           <a href="https://instagram.com/karakonya_official" target="_blank"><i class="fab fa-instagram"></i></a>
+                           <!--a href="" target="_blank" rel="noopener noreferrer"><img src="{{ asset('assets/img/common/line.png') }}" alt=""></a></div-->
+                        <div class="first_menu">
+                            <ul>
+                                <li><a href="{{ url('homepage') }}user_data/beginner"><img src="{{ asset('assets/img/common/begin.png') }}" alt=""><span>初めての方へ</span></a></li>
+                                {#<li><a href="{{ url('homepage') }}user_data/shopping_guide"><img src="{{ asset('assets/img/common/guide.png') }}" alt=""><span>お買い物ガイド</span></a></li>#}
+                                <li><a href="{{ url('mypage_favorite') }}"><img src="{{ asset('assets/img/common/favo.png') }}" alt=""><span>お気に入り</span></a></li>
+                                {% if is_granted('ROLE_USER') %}
+                                  <li><a href="{{ url('mypage') }}"><img src="{{ asset('assets/img/common/register.png') }}" alt=""><span>マイページ</span></a></li>
+                                {% else %}
+                                  <li><a href="{{ url('mypage_login') }}"><img src="{{ asset('assets/img/common/register.png') }}" alt=""><span>登録・ログイン</span></a></li>
+                                {% endif %}
+                                <li><a href="{{ url('cart') }}"><img src="{{ asset('assets/img/common/cart.png') }}" alt=""><span>カート</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header_second_wrap">
+            <div id="header_navi">
+                <ul>
+                    <li class="head_product">
+                        <a href="{{ url('product_list') }}">PRODUCTS<br><span class="menu_ja">商品一覧</span></a>
+                    </li>
+                    <li class="howtouse">
+                        <a href="{{ url('homepage') }}user_data/how_to_use">HOW TO USE<br><span class="menu_ja">カラコンの使い方</span></a>
+                    </li>
+                    <li class="howtochoose">
+                        <a href="{{ url('homepage') }}user_data/how_to_choose">HOW TO CHOOSE<br><span class="menu_ja">カラコンの選び方</span></a>
+                    </li>
+                    <li class="faq">
+                        <a href="{{ url('homepage') }}user_data/faq">FAQ<br><span class="menu_ja">よくある質問</span></a>
+                    </li>
+                    {#<li class="sale">#}
+                    {#    <a href="{{ url('homepage') }}user_data/sale">SALE<br><span class="menu_ja">セール</span></a>#}
+                    {#</li>#}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="block_outer">
+    <div id="viewed_area">
+        <h2><img src="{{ asset('assets/img/title/viewed_items_title.png') }}" alt="最近見た商品" />
+        </h2>
+        <div class="block_body">
+            <div class="viewed_contents">
+                <link rel="stylesheet" href="{{ asset('assets/css/flexslider.css') }}" type="text/css" />                
+                <div class="flexslider flex2">
+                    {% set ProductRepository = repository('Eccube\\Entity\\Product') %}
+                    {% set check_product_ids = app.session.get('check_product.product') %}
+                    <ul class="slides">
+                        {% for product_id in check_product_ids %}
+                        {% set Product = ProductRepository.find(product_id) %}
+                          <li>
+                              <div class="product_item clearfix">
+                              <div class="productImage">
+                                  <a href="{{ url('product_detail', {'id': Product.id}) }}" title="{{ Product.name }}">
+                                    <img src="{{ asset(Product.main_list_image|no_image_product, 'save_image') }}" alt="{{ Product.name }}" style="max-width: 240px;max-height: 240px;" loading="lazy">
+                                  </a>
+                              </div>
+                              <div class="productContents">
+                                  <h3>
+                                    <a href="{{ url('product_detail', {'id': Product.id}) }}" title="{{ Product.name }}">{{ Product.name }}</a>
+                                  </h3>
+                                  <p class="sale_price">
+                                    販売価格(税込):  <span class="price">{{ Product.getPrice02IncTaxMin|number_format }}円</span>
+                                  </p>
+                              </div>
+                              </div>
+                          </li>
+                        {% endfor %}
+                    </ul>
+                <script src="{{ asset('assets/js/jquery-2.1.4.min.js') }}"></script>
+                <script src="{{ asset('assets/js/jquery.flexslider.js') }}"></script>
+                <script type="text/javascript" charset="utf-8">
+                $(function(){
+                    $(window).load(function() {
+                      $('.flex2').flexslider({
+                          controlNav: true,
+                          directionNav: true,
+                          animation: "slide",
+                          slideshowSpeed: 5000,
+                          animationSpeed: 1000,
+                          itemWidth: 240,
+                          itemMargin: 22,
+                          controlNav: false
+                      });
+                    });
+                });
+                </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,182 @@
+{% set categoryRepository = repository('Eccube\\Entity\\Category') %}
+    {% set category_ids = app.session.get('category_ids') %}
+    {% block javascript %}
+    <script type="text/javascript">
+      $(function(){
+        $('.category a').click(function(e){
+            e.preventDefault();
+            
+            $('input[name="category_id"]').val($(this).attr('value'));
+            $('.search_btn').click();
+        });
+      });
+    </script>
+    {% endblock javascript %}
+    {% form_theme form 'Form/form_div_layout.twig' %}
+    <div class="block_outer">
+        <div id="search_area">
+            <h2 class="search_h2">SEARCH<span class="search_h2_ja">条件で探す</span></h2>
+                <div class="block_body">
+                    <form name="search_form" id="search_form" method="get" action="{{ path('product_list') }}">
+                        <dl class="formlist key_search">
+                            <dt><img src="{{ asset('assets/img/title/keyword_search.png') }}" alt="キーワードから探す"><span class="search-c">キーワードから探す</span></dt>
+                            <dd>
+                                {{ form_widget(form.name, {'id': null, 'attr': {'class': 'box140', 'maxlength' : '50' }} ) }}
+                                <input type="submit" value="検索" class="search_btn">
+                            </dd>
+                        </dl>
+                        <input type="hidden" name="category_id"><br/>
+                        <dl class="formlist category">
+                            <dt><img src="{{ asset('assets/img/title/frequency_search.png') }}" alt="キーワードから探す"><span class="search-c">度あり・度なしで探す</span></dt>
+                            <dd>
+                                <a href="" value="{{ categoryRepository.findOneBy({ 'name': '度あり' }).id }}" {% if categoryRepository.findOneBy({ 'name': '度あり' }).id in category_ids %} class="active" {% endif %} >度あり</a>
+                            </dd>
+                            <dd>
+                                <a href="" value="{{ categoryRepository.findOneBy({ 'name': '度なし' }).id }}" {% if categoryRepository.findOneBy({ 'name': '度なし' }).id in category_ids %} class="active" {% endif %}>度なし</a>
+                            </dd>
+                        </dl>
+                        <dl class="formlist category">
+                            <dt><img src="{{ asset('assets/img/title/span_search.png') }}" alt="装用期間で探す"><span class="search-c">装用期間で探す</span></dt>
+                            <dd>
+                                <a href="" value="{{ categoryRepository.findOneBy({ 'name': '1day' }).id }}" {% if categoryRepository.findOneBy({ 'name': '1day' }).id in category_ids %} class="active" {% endif %}>ワンデー(1day)</a>
+                            </dd>
+                            {#<dd>#}
+                            {#    <a href="" value="{{ categoryRepository.findOneBy({ 'name': '2week' }).id }}" {% if categoryRepository.findOneBy({ 'name': '2week' }).id in category_ids %} class="active" {% endif %}>2週間(2week)</a>#}
+
+                            {#</dd>#}
+                            {#<dd>#}
+                            {#    <a href="" value="{{ categoryRepository.findOneBy({ 'name': '1month' }).id }}" {% if categoryRepository.findOneBy({ 'name': '1month' }).id in category_ids %} class="active" {% endif %}>1ヶ月(1month)</a>#}
+                            {#</dd>#}
+                        </dl>
+                        <dl class="formlist color_radio category">
+                            <dt><img src="{{ asset('assets/img/title/color_search.png') }}" alt="カラーで探す"><span class="search-c">カラーで探す</span></dt>
+                            <dd>
+                                <a href="" value="{{ categoryRepository.findOneBy({ 'name': 'ブラウン' }).id }}" {% if categoryRepository.findOneBy({ 'name': 'ブラウン' }).id in category_ids %} class="active" {% endif %}>
+                                    <img src="{{ asset('assets/img/item/brown.png') }}" alt="ブラウン">
+                                </a>
+                            </dd>
+                            <dd>
+                                <a href="" value="{{ categoryRepository.findOneBy({ 'name': 'ブラック' }).id }}" {% if categoryRepository.findOneBy({ 'name': 'ブラック' }).id in category_ids %} class="active" {% endif %}>
+                                    <img src="{{ asset('assets/img/item/black.png') }}" alt="ブラック">
+                                </a>
+                            </dd>
+                            <dd>
+                                <a href="" value="{{ categoryRepository.findOneBy({ 'name': 'グレー' }).id }}" {% if categoryRepository.findOneBy({ 'name': 'グレー' }).id in category_ids %} class="active" {% endif %}>
+                                    <img src="{{ asset('assets/img/item/gray.png') }}" alt="グレー">
+                                </a>
+                            </dd>
+                            <dd>
+                                <a href="" value="{{ categoryRepository.findOneBy({ 'name': 'ベージュ' }).id }}" {% if categoryRepository.findOneBy({ 'name': 'ベージュ' }).id in category_ids %} class="active" {% endif %}>
+                                    <img src="{{ asset('assets/img/item/beige.png') }}" alt="ベージュ">
+                                </a>
+                            </dd>
+                            <dd>
+                                <a href="" value="{{ categoryRepository.findOneBy({ 'name': 'ピンク' }).id }}" {% if categoryRepository.findOneBy({ 'name': 'ピンク' }).id in category_ids %} class="active" {% endif %}>
+                                    <img src="{{ asset('assets/img/item/pink.png') }}" alt="ピンク">
+                                </a>
+                            </dd>
+                            <dd>
+                                <a href="" value="{{ categoryRepository.findOneBy({ 'name': 'グリーン' }).id }}" {% if categoryRepository.findOneBy({ 'name': 'グリーン' }).id in category_ids %} class="active" {% endif %}>
+                                    <img src="{{ asset('assets/img/item/green.png') }}" alt="グリーン">
+                                </a>
+                            </dd>
+                            <dd>
+                                <a href="" value="{{ categoryRepository.findOneBy({ 'name': 'ブルー' }).id }}" {% if categoryRepository.findOneBy({ 'name': 'ブルー' }).id in category_ids %} class="active" {% endif %}>
+                                    <img src="{{ asset('assets/img/item/blue.png') }}" alt="ブルー">
+                                </a>
+                            </dd>
+                            <dd>
+                                <a href="" value="{{ categoryRepository.findOneBy({ 'name': 'パープル' }).id }}" {% if categoryRepository.findOneBy({ 'name': 'パープル' }).id in category_ids %} class="active" {% endif %}>
+                                    <img src="{{ asset('assets/img/item/purple.png') }}" alt="パープル">
+                                </a>
+                            </dd>
+                        </dl>
+                        
+                        
+                        <dl class="formlist category">
+                            <dt><img src="{{ asset('assets/img/title/dia_search.png') }}" alt="レンズ直径で探す"><span class="search-c">BCで探す</span></dt>
+                            <dd>
+                                <a href="" value="{{ categoryRepository.findOneBy({ 'name': '8.6' }).id }}" {% if categoryRepository.findOneBy({ 'name': '8.6' }).id in category_ids %} class="active" {% endif %}>8.6</a>
+                            </dd>
+                            <dd>
+                                <a href="" value="{{ categoryRepository.findOneBy({ 'name': '8.7' }).id }}" {% if categoryRepository.findOneBy({ 'name': '8.7' }).id in category_ids %} class="active" {% endif %}>8.7</a>
+                            </dd>
+                            <dd>
+                                <a href="" value="{{ categoryRepository.findOneBy({ 'name': '8.8' }).id }}" {% if categoryRepository.findOneBy({ 'name': '8.8' }).id in category_ids %} class="active" {% endif %}>8.8</a>
+                            </dd>
+                        </dl>
+                        
+                        
+                        <dl class="formlist category">
+                            <dt><img src="{{ asset('assets/img/title/dia_search.png') }}" alt="レンズ直径で探す"><span class="search-c">レンズ直径で探す</span></dt>
+                            <dd>
+                                <a href="" value="{{ categoryRepository.findOneBy({ 'name': '14.0mm' }).id }}" {% if categoryRepository.findOneBy({ 'name': '14.0mm' }).id in category_ids %} class="active" {% endif %}>14.0mm</a>
+                            </dd>
+                            {#<dd>#}
+                            {#    <a href="" value="{{ categoryRepository.findOneBy({ 'name': '14.1mm' }).id }}" {% if categoryRepository.findOneBy({ 'name': '14.1mm' }).id in category_ids %} class="active" {% endif %}>14.1mm</a>#}
+                            {#</dd>#}
+                            <dd>
+                                <a href="" value="{{ categoryRepository.findOneBy({ 'name': '14.2mm' }).id }}" {% if categoryRepository.findOneBy({ 'name': '14.2mm' }).id in category_ids %} class="active" {% endif %}>14.2mm</a>
+                            </dd>
+                            {#<dd>#}
+                            {#    <a href="" value="{{ categoryRepository.findOneBy({ 'name': '14.3mm' }).id }}" {% if categoryRepository.findOneBy({ 'name': '14.3mm' }).id in category_ids %} class="active" {% endif %}>14.3mm</a>#}
+                            {#</dd>#}
+                            {#<dd>#}
+                            {#    <a href="" value="{{ categoryRepository.findOneBy({ 'name': '14.4mm' }).id }}" {% if categoryRepository.findOneBy({ 'name': '14.4mm' }).id in category_ids %} class="active" {% endif %}>14.4mm</a>#}
+                            {#</dd>#}
+                            <dd>
+                                <a href="" value="{{ categoryRepository.findOneBy({ 'name': '14.5mm' }).id }}" {% if categoryRepository.findOneBy({ 'name': '14.5mm' }).id in category_ids %} class="active" {% endif %}>14.5mm</a>
+                            </dd>
+                            {#<dd>#}
+                            {#    <a href="" value="{{ categoryRepository.findOneBy({ 'name': '14.8mm' }).id }}" {% if categoryRepository.findOneBy({ 'name': '14.8mm' }).id in category_ids %} class="active" {% endif %}>14.8mm</a>#}
+                            {#</dd>#}
+                            {#<dd>#}
+                            {#    <a href="" value="{{ categoryRepository.findOneBy({ 'name': '15.0mm' }).id }}" {% if categoryRepository.findOneBy({ 'name': '15.0mm' }).id in category_ids %} class="active" {% endif %}>15.0mm</a>#}
+                            {#</dd>#}
+                        </dl>
+                        {#<dl class="formlist type_search category">#}
+                        {#    <dt><img src="{{ asset('assets/img/title/type_search.png') }}" alt="タイプで探す"><span class="search-c">タイプで探す</span></dt>#}
+                        {#    <dd>#}
+                        {#        <a href="" value="{{ categoryRepository.findOneBy({ 'name': 'ナチュラル' }).id }}" {% if categoryRepository.findOneBy({ 'name': 'ナチュラル' }).id in category_ids %} class="active" {% endif %}>ナチュラル</a>#}
+                        {#    </dd>#}
+                        {#    <dd>#}
+                        {#        <a href="" value="{{ categoryRepository.findOneBy({ 'name': 'ハーフ' }).id }}" {% if categoryRepository.findOneBy({ 'name': 'ハーフ' }).id in category_ids %} class="active" {% endif %}>ハーフ</a>#}
+                        {#    </dd>#}
+                        {#    <dd>#}
+                        {#        <a href="" value="{{ categoryRepository.findOneBy({ 'name': 'うるおい成分' }).id }}" {% if categoryRepository.findOneBy({ 'name': 'うるおい成分' }).id in category_ids %} class="active" {% endif %}>うるおい成分</a>#}
+                        {#    </dd>#}
+                        {#    <dd>#}
+                        {#        <a href="" value="{{ categoryRepository.findOneBy({ 'name': 'UVカット' }).id }}" {% if categoryRepository.findOneBy({ 'name': 'UVカット' }).id in category_ids %} class="active" {% endif %}>UVカット</a>#}
+                        {#    </dd>#}
+                        {#    <dd>#}
+                        {#        <a href="" value="{{ categoryRepository.findOneBy({ 'name': 'シリコン' }).id }}" {% if categoryRepository.findOneBy({ 'name': 'シリコン' }).id in category_ids %} class="active" {% endif %}>シリコン</a>#}
+                        {#    </dd>#}
+                        {#    <dd>#}
+                        {#        <a href="" value="{{ categoryRepository.findOneBy({ 'name': 'ブルーライトカット' }).id }}" {% if categoryRepository.findOneBy({ 'name': 'ブルーライトカット' }).id in category_ids %} class="active" {% endif %}>ブルーライトカット</a>#}
+                        {#    </dd>#}
+                        {#</dl>#}
+                    </form>
+                </div>
+            <h2 class="search_h2 brand_h2">BRAND<span class="search_h2_ja">ブランドから探す</span></h2>
+                <div class="block_body">
+                    <ul class="brand_block category">
+                        <li {% if categoryRepository.findOneBy({ 'name': 'Claire' }).id in category_ids %} class="active" {% endif %}>
+                            <a href="" value="{{ categoryRepository.findOneBy({ 'name': 'Claire' }).id }}" {% if categoryRepository.findOneBy({ 'name': 'Claire' }).id in category_ids %} class="active" {% endif %}>Claire</a>
+                        </li>
+                        <li {% if categoryRepository.findOneBy({ 'name': 'Dreamy' }).id in category_ids %} class="active" {% endif %}>
+                            <a href="" value="{{ categoryRepository.findOneBy({ 'name': 'Dreamy' }).id }}" {% if categoryRepository.findOneBy({ 'name': 'Dreamy' }).id in category_ids %} class="active" {% endif %}>Dreamy</a>
+                        </li>
+                        <li {% if categoryRepository.findOneBy({ 'name': 'IT EYES' }).id in category_ids %} class="active" {% endif %}>
+                            <a href="" value="{{ categoryRepository.findOneBy({ 'name': 'IT EYES' }).id }}" {% if categoryRepository.findOneBy({ 'name': 'IT EYES' }).id in category_ids %} class="active" {% endif %}>IT EYES</a>
+                        </li>
+                        <li {% if categoryRepository.findOneBy({ 'name': 'MAX COLOR 1day' }).id in category_ids %} class="active" {% endif %}>
+                            <a href="" value="{{ categoryRepository.findOneBy({ 'name': 'MAX COLOR 1day' }).id }}" {% if categoryRepository.findOneBy({ 'name': 'MAX COLOR 1day' }).id in category_ids %} class="active" {% endif %}>MAX COLOR 1day</a>
+                        </li>
+                        <li {% if categoryRepository.findOneBy({ 'name': 'SJ' }).id in category_ids %} class="active" {% endif %}>
+                            <a href="" value="{{ categoryRepository.findOneBy({ 'name': 'SJ' }).id }}" {% if categoryRepository.findOneBy({ 'name': 'SJ' }).id in category_ids %} class="active" {% endif %}>SJ</a>
+                        </li>
+                    </ul>
+                </div>
+            <!-- モデル一覧ここに入る -->
+        </div>
+    </div>

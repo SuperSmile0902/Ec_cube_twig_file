@@ -1,0 +1,200 @@
+<style>
+    #plg_Up_SellRanking_area .block_title {
+        font-size: 16px;
+        border-bottom: 1px solid #aaa;
+        border-left: 6px solid #aaa;
+        padding: 5px 10px;
+        margin-bottom: 15px;
+    }
+    #plg_Up_SellRanking_area .item_panel {
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 15px; 
+        margin-bottom: 20px;
+    }
+    #plg_Up_SellRanking_area .item_image {
+        margin-bottom: 5px;
+    }
+    #plg_Up_SellRanking_area .review {
+        color: #E1C030;
+    }
+    #plg_Up_SellRanking_area .review .count {
+        color: #2A67C7;
+    }
+</style>
+
+{% set categoryRepository = repository('Eccube\\Entity\\Category') %}
+
+<div class="block_outer">
+    <div id="ranking_area">
+        <h2>RANKING<span class="h2_ja">カラコン人気ランキング</span></h2>
+        <div class="block_body">
+            <div class="tab_wrap">
+{#
+                <div class="tab-area">
+                    <label id="label_tab1" class="tab active" for="tab1">ワンデー（1day）</label>
+                    <label id="label_tab2" class="tab" for="tab2">2週間（2week）</label>
+                    <label id="label_tab3" class="tab" for="tab3">1ヶ月（1month）</label>
+                </div>
+#}
+                <div class="panel_area">
+                    <div id="panel1" class="tab_panel">
+                        <div class="content-area">
+                            <div class="content show">
+                                <h3 class="rank-title">ワンデーカラコンランキング</h3>
+                                <div class="item-list">
+                                {% for i, Product in ProductsDay %}
+                                    <div class="product_item clearfix">
+                                        <div class="rank_num">
+                                            {% if i < 3 %} <img src="{{ asset('assets/img/icon/rank-' ~ (i+1) ~ '.png') }}"> {% endif %}
+                                            <span class="rank_num num-{{ i + 1 }}">
+                                                {{ i + 1 }}位
+                                            </span>
+                                        </div>
+                                        <div class="productImage">
+                                            <a href="{{ url('product_detail', {'id': Product.id}) }}">
+                                                <img src="{{ asset(Product.main_list_image|no_image_product, 'save_image') }}" style="max-width: 240px;max-height: 240px;" alt="{{ Product.name }}" />
+                                            </a>
+                                        </div>
+                                        <div class="productContents">
+                                            <h3>
+                                                <a href="{{ url('product_detail', {'id': Product.id}) }}">
+                                                    {{ Product.name }}
+                                                </a>
+                                            </h3>
+                                            <p class="sale_price">
+                                                販売価格(税込):  
+                                                <span class="price">
+                                                    {{ Product.getPrice02IncTaxMin|number_format }}円
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+{#
+                    <div id="panel2" class="tab_panel">
+                        <div class="content-area">
+                            <div class="content">
+                                    <h3 class="rank-title">2週間カラコンランキング</h3>
+                                    <div class="item-list">
+                                    {% for i, Product in Products2Weeks %}
+                                        <div class="product_item clearfix">
+                                            <div class="rank_num">
+                                            {% if i < 3 %} <img src="{{ asset('assets/img/icon/rank-' ~ (i+1) ~ '.png') }}"> {% endif %}
+                                            <span class="rank_num num-{{ i + 1 }}">
+                                                {{ i + 1 }}位
+                                            </span>
+                                            </div>
+                                            <div class="productImage">
+                                                <a href="{{ url('product_detail', {'id': Product.id}) }}">
+                                                    <img src="{{ asset(Product.main_list_image|no_image_product, 'save_image') }}" style="max-width: 240px;max-height: 240px;" alt="{{ Product.name }}" />
+                                                </a>
+                                            </div>
+                                            <div class="productContents">
+                                                <h3>
+                                                    <a href="{{ url('product_detail', {'id': Product.id}) }}">
+                                                        {{ Product.name }}
+                                                    </a>
+                                                </h3>
+                                                <p class="sale_price">
+                                                    販売価格(税込):  
+                                                    <span class="price">
+                                                        {{ Product.getPrice02IncTaxMin|number_format  }}円
+                                                    </span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div id="panel3" class="tab_panel">
+                        <div class="content-area">
+                            <div class="content">
+                                    <h3 class="rank-title">1ヶ月カラコンランキング</h3>
+                                    <div class="item-list">
+                                    {% for i, Product in ProductsMonth %}
+                                        <div class="product_item clearfix">
+                                            <div class="rank_num">
+                                            {% if i < 3 %} <img src="{{ asset('assets/img/icon/rank-' ~ (i+1) ~ '.png') }}"> {% endif %}
+                                            <span class="rank_num num-{{ i + 1 }}">
+                                                {{ i + 1 }}位
+                                            </span>
+                                            </div>
+                                            <div class="productImage">
+                                                <a href="{{ url('product_detail', {'id': Product.id}) }}">
+                                                    <img src="{{ asset(Product.main_list_image|no_image_product, 'save_image') }}" style="max-width: 240px;max-height: 240px;" alt="{{ Product.name }}" />
+                                                </a>
+                                            </div>
+                                            <div class="productContents">
+                                                <h3>
+                                                    <a href="{{ url('product_detail', {'id': Product.id}) }}">
+                                                        {{ Product.name }}
+                                                    </a>
+                                                </h3>
+                                                <p class="sale_price">
+                                                    販売価格(税込):  
+                                                    <span class="price">
+                                                        {{ Product.getPrice02IncTaxMin|number_format  }}円
+                                                    </span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                    </div>
+                            </div>
+                         </div>
+                    </div>
+#}
+                </div>
+            </div>
+            {#<div class="news_archive to_archive">
+                <a id="ranking_link_value" href="{{ url('product_list') }}?category_id={{ categoryRepository.findOneBy({ 'name': '1day' }).id }}&orderby=5">一覧はコチラ ›</a>
+            </div>#}
+        </div>
+            
+    </div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+$(function(){
+    $(document).on("click", "#ranking_link", function() {
+        location.href = $(ranking_link_value).val();
+    });
+
+    $('#label_tab1').click(function() {
+        $('#label_tab1').addClass('active');
+        $('#label_tab2').removeClass('active');
+        $('#label_tab3').removeClass('active');
+        $('#panel1 .content').addClass('show');
+        $('#panel2 .content').removeClass('show');
+        $('#panel3 .content').removeClass('show');
+        $('#ranking_link_value').attr('href', '{{ url('product_list') }}?category_id={{ categoryRepository.findOneBy({ 'name': '1day' }).id }}&orderby=5');
+    });
+
+    $('#label_tab2').click(function() {
+        $('#label_tab1').removeClass('active');
+        $('#label_tab2').addClass('active');
+        $('#label_tab3').removeClass('active');
+        $('#panel1 .content').removeClass('show');
+        $('#panel2 .content').addClass('show');
+        $('#panel3 .content').removeClass('show');
+        $('#ranking_link_value').attr('href', '{{ url('product_list') }}?category_id={{ categoryRepository.findOneBy({ 'name': '2week' }).id }}&orderby=5');
+    });
+
+    $('#label_tab3').click(function() {
+        $('#label_tab1').removeClass('active');
+        $('#label_tab2').removeClass('active');
+        $('#label_tab3').addClass('active');
+        $('#panel1 .content').removeClass('show');
+        $('#panel2 .content').removeClass('show');
+        $('#panel3 .content').addClass('show');
+        $('#ranking_link_value').attr('href', '{{ url('product_list') }}?category_id={{ categoryRepository.findOneBy({ 'name': '1month' }).id }}&orderby=5');
+    });
+});
+</script>

@@ -1,0 +1,43 @@
+{% block stylesheet %}
+    <style>
+        .ec-orderBySaleRole {
+            padding: 60px 0
+        }
+    </style>
+{% endblock %}
+
+{% if Products|length %}
+    <div class="ec-orderBySaleRole">
+        <div class="ec-role">
+            <div class="ec-secHeading">
+                <span class="ec-secHeading__en">{{ 'front.order_by_sale.block.topic.topic__en'|trans }}</span>
+                <span class="ec-secHeading__line"></span>
+                <span class="ec-secHeading__ja">{{ 'front.order_by_sale.block.topic.topic__ja'|trans }}</span>
+            </div>
+
+            <ul class="ec-shelfGrid">
+                {% for Product in Products %}
+                    <li class="ec-shelfGrid__item">
+                        <a href="{{ url('product_detail', {'id': Product.id}) }}">
+                            <img src="{{ asset(Product.mainFileName|no_image_product, "save_image") }}" alt="{{ Product.name }}">
+                            <dl>
+                                <dt class="item_name">{{ Product.name }}</dt>
+                                <dd class="item_price">
+                                    {% if Product.hasProductClass %}
+                                        {% if Product.getPrice02Min == Product.getPrice02Max %}
+                                            {{ Product.getPrice02IncTaxMin|price }}
+                                        {% else %}
+                                            {{ Product.getPrice02IncTaxMin|price }} ～ {{ Product.getPrice02IncTaxMax|price }}
+                                        {% endif %}
+                                    {% else %}
+                                        {{ Product.getPrice02IncTaxMin|price }}
+                                    {% endif %}
+                                </dd>
+                            </dl>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endif %}

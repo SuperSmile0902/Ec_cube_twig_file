@@ -1,0 +1,39 @@
+{% if 'homepage' == app.request.attributes.get('_route') %}
+<div class="block_outer">
+        <div id="magazine_area">
+            <h2 class="top_h2">MAGAZINE<span class="h2_ja">マガジン</span>
+            </h2>
+            <div class="block_body">
+                <div class="magazine_contents">
+                    <div class="first_article_wrap">
+                        <div class="first_article">
+                        <img src="{{ asset('assets/img/article/article_img.jpg') }}" alt="">
+                            <div class="article_textarea">
+                                <h3>記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル</h3>
+                                <p class="author">
+                                    AUTHOR：編集者名　編集者名
+                                </p>
+                                <p class="article_main_text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sub_article_wrap">
+                        <div class="sub_article">
+                            <img src="{{ asset('assets/img/article/article_img.jpg') }}" alt="">
+                            <h3>記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル</h3>
+                        </div>
+                        <div class="sub_article">
+                            <img src="{{ asset('assets/img/article/article_img.jpg') }}" alt="">
+                            <h3>記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル</h3>
+                        </div>
+                        <div class="sub_article">
+                            <img src="{{ asset('assets/img/article/article_img.jpg') }}" alt="">
+                            <h3>記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル</h3>
+                        </div>                          
+                    </div>
+                </div>
+                {# <div class="magazine_archive to_archive"><a href="{{ url('product_list') }}">一覧はコチラ ›</a></div> #}
+            </div>
+        </div>
+    </div>
+{% endif %}

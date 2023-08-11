@@ -1,0 +1,103 @@
+{# <!--{include_php file=`$smarty.const.HTML_REALDIR`frontparts/bloc/sp_search_header.php}--> #}
+
+
+{# <link rel="stylesheet" href="{{ asset('assets/css/sp/reset.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/css/sp/common.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/css/sp/block.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/css/sp/jqm.css') }}" />
+<script src="{{ asset('assets/js/eccube.sphone.js') }}"></script>
+<script src="{{ asset('assets/js/eccube.sphone.legacy.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.biggerlink.js') }}"></script>
+<script src="{{ asset('assets/js/config.js') }}"></script>
+<link rel="stylesheet" href="{{ asset('assets/js/jquery.mobile/jquery.mobile-1.3.1.min.css') }}" />
+<script src="{{ asset('assets/js/jquery.mobile/jquery.mobile-1.3.1.min.js') }}"></script> #}
+
+<header class="global_header clearfix">
+    <div class="header_top">
+        <div class="humburger_btn burger-btn"><img src="{{ asset('assets/img/button/g_nav_btn.png') }}" alt=""></div>
+        <a rel="external" href="{{ url('homepage') }}" style="width: calc(100% - 140px);"><img src="{{ asset('assets/img/common/logo.png') }}" width="100%" alt="{{ BaseInfo.shopname }}" /></a>
+        <div class="right_btn_wrap">
+            <div class="search_btn"><img src="{{ asset('assets/img/button/search_btn.png') }}" alt=""></div>
+            <div class="cart_btn"><a href="{{ url('cart') }}"><img src="{{ asset('assets/img/button/cart_btn.png') }}" alt=""></a></div>
+        </div>
+    </div>
+    <div class="nav-wrapper">
+        <nav class="header-nav">
+            <div class="nav-list">
+                    <img src="{{ asset('assets/img/title/g_menu_site.png') }}" alt="">
+                    <ul>
+                        <li class="nav-item"><a href="{{ url('product_list') }}">商品一覧</a></li>
+                        <li class="nav-item"><a href="{{ url('homepage') }}user_data/how_to_use">カラコンの使い方</a></li>
+                        <li class="nav-item"><a href="{{ url('homepage') }}user_data/how_to_choose">カラコンの選び方</a></li>
+                        <li class="nav-item"><a href="{{ url('homepage') }}user_data/faq">よくある質問</a></li>
+                        {#<li class="nav-item"><a href="{{ url('homepage') }}user_data/sale">セール</a></li>#}
+                        {# <li class="nav-item"><a href="{{ url('review_list', {'id': Product.id}) }}">レビュー記事</a></li> #}
+                        <li class="nav-item"><a href="{{ url('homepage') }}user_data/beginner"><img src="{{ asset('assets/img/common/begin.png') }}" alt="">初めての方へ</a></li>
+                        {#<li class="nav-item icon-item"><a href="{{ url('homepage') }}user_data/shopping_guide"><img src="{{ asset('assets/img/title/g_menu_guide.png') }}" alt=""></a></li>#}
+                        <li class="nav-item"><a href="{{ url('mypage_favorite') }}"><img src="{{ asset('assets/img/common/favo.png') }}" alt="">お気に入り</a></li>
+                        {% if is_granted('ROLE_USER') %}
+                          <li class="nav-item"><a href="{{ url('mypage') }}"><img src="{{ asset('assets/img/common/register.png') }}" alt=""><span>マイページ</span></a></li>
+                        {% else %}
+                          <li class="nav-item"><a href="{{ url('mypage_login') }}"><img src="{{ asset('assets/img/common/register.png') }}" alt=""><span>登録・ログイン</span></a></li>
+                        {% endif %}
+                    </ul>
+                    {% if is_granted('ROLE_USER') %}
+                    <img src="{{ asset('assets/img/title/g_menu_mypage.png') }}" alt="">
+                    <ul>
+                        <li class="nav-item"><a href="{{ url('mypage') }}">ご注文履歴</a></li>
+                        <li class="nav-item"><a href="{{ url('mypage_change') }}">会員情報編集</a></li>
+                        <li class="nav-item"><a href="{{ url('mypage_delivery') }}">お届け先一覧</a></li>
+                        <li class="nav-item"><a rel="external" href="{{ url('logout') }}">ログアウト</a></li>
+                        <li class="nav-item"><a href="{{ url('mypage_withdraw') }}">退会手続き</a></li>
+                    </ul>
+                    {% endif %}
+                    <div class="sns_wrap">
+                        <a href="https://twitter.com/karakonya_ec" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com/karakonya_official" target="_blank"><i class="fab fa-instagram"></i></a>
+                        {#<a href="" target="_blank" rel="noopener noreferrer">#}
+                        {#    <img class="line_btn" src="{{ asset('assets/img/title/g_menu_line.png') }}" alt="">#}
+                        {#</a>#}
+                    </div>
+            </div>
+        </nav>
+        <div class="burger-btn burger-btn-close">
+                <img class="close_btn" src="{{ asset('assets/img/title/g_nav_close.png') }}" alt="">
+        </div>
+    </div>
+    <div class="nav-wrapper_search">
+        <nav class="header-nav_search">
+            <div class="nav-list_search">
+              {{ render(path('block_search_product_by_category')) }}
+            </div>
+        </nav>
+        <div class="search_btn search-btn-close">
+                <img class="search_close_btn" src="{{ asset('assets/img/title/g_nav_close.png') }}" alt="">
+        </div>
+    </div>
+    <div class="header_utility">
+        <div class="header_first_right">
+            <div class="first_menu">
+                <ul>
+                    <li><a href="{{ url('homepage') }}user_data/beginner"><img src="{{ asset('assets/img/common/begin.png') }}" alt=""><span>初めての方へ</span></a></li>
+                    {#<li><a href="{{ url('homepage') }}user_data/shopping_guide"><img src="{{ asset('assets/img/common/guide.png') }}" alt=""><span>お買い物ガイド</span></a></li>#}
+                    <li><a href="{{ url('mypage_favorite') }}"><img src="{{ asset('assets/img/common/favo.png') }}" alt=""><span>お気に入り</span></a></li>
+                    {% if is_granted('ROLE_USER') %}
+                      <li><a href="{{ url('mypage_login') }}"><img src="{{ asset('assets/img/common/register.png') }}" alt=""><span>マイページ</span></a></li>
+                    {% else %}
+                      <li><a href="{{ url('mypage_login') }}"><img src="{{ asset('assets/img/common/register.png') }}" alt=""><span>登録・ログイン</span></a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $('.burger-btn').on('click',function(){
+          $('.burger-btn').toggleClass('close');
+          $('.nav-wrapper').fadeToggle(250);
+        });
+        $('.search_btn').on('click',function(){
+          $('.search_btn').toggleClass('close');
+          $('.nav-wrapper_search').fadeToggle(250);
+        });
+    </script>
+</header>

@@ -1,0 +1,3 @@
+{% if 'homepage' == app.request.attributes.get('_route') %}  
+    {{ render(path('block_order_by_sale_sp')) }}
+{% endif %}

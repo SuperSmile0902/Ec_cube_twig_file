@@ -1,0 +1,39 @@
+{#
+This file is part of EC-CUBE
+
+Copyright(c) EC-CUBE CO.,LTD. All Rights Reserved.
+
+http://www.ec-cube.co.jp/
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+#}
+{% extends 'default_frame.twig' %}
+
+{% set body_class = 'front_page' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{ asset('assets/css/flexslider.css') }}" type="text/css" />
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{ asset('assets/js/jquery-2.1.4.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.flexslider.js') }}"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(window).load(function() {
+        $('.flex1').flexslider();
+        });
+    </script>
+{% endblock javascript %}
+
+{% block main %}
+    <div class="flexslider flex1">
+        <ul class="slides">
+            <li><a href="/products/list?name=&category_id=148&reset=true"><img src="{{ asset('assets/img/banner/it_top.jpg') }}" alt="bambi1day"></a></li>
+            <li><a href="/products/list?name=&category_id=146&reset=true"><img src="{{ asset('assets/img/banner/max_top.jpg') }}" alt="bambi1day"></a></li>
+            <li><a href="/products/list?category_id=146&reset=true"><img src="{{ asset('assets/img/banner/dreamy_top.jpg') }}" alt="bambi1day"></a></li>
+            <li><a href="/products/list?category_id=146&reset=true"><img src="{{ asset('assets/img/banner/dreamy_top02.jpg') }}" alt="bambi1day"></a></li>
+            <li><a href="/products/list?category_id=178&reset=true"><img src="{{ asset('assets/img/banner/cla_top.jpg') }}" alt="bambi1day"></a></li>
+        </ul>
+    </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+<footer class="global_footer">
+    <nav class="guide_area">
+        <ul>
+            <li><a href="{{ url('product_list') }}">商品一覧</a></li>
+            <li><a href="{{ url('homepage') }}user_data/how_to_use">カラコンの使い方</a></li>
+            <li><a href="{{ url('homepage') }}user_data/how_to_choose">カラコンの選び方</a></li>
+            <li><a href="{{ url('homepage') }}user_data/faq">よくある質問</a></li>
+        </ul>
+        <ul>
+            {#<a href="{{ url('homepage') }}user_data/shopping_guide">お買い物ガイド</a>#}
+            <li><a href="{{ url('contact') }}">お問い合わせ</a></li>
+            <li><a href="{{ url('help_privacy') }}">プライバシーポリシー</a></li>
+            <li><a href="{{ url('help_tradelaw') }}">特定商取引表記</a></li>
+        </ul>
+    </nav>
+    <div id="footer-logo"><a href="{{ url('homepage') }}"><img src="{{ asset('assets/img/common/footer-logo.png') }}" alt="からこんや"></a></div>
+    <p class="copyright">Copyright &copy; karakonya All Rights Reserved.</small></p>
+</footer>

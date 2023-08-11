@@ -1,0 +1,28 @@
+<div class="clearfix"></div>
+<div class="block_outer">
+	<div id="new_items_area">
+      <h2>NEW ITEMS<span class="h2_ja">新作アイテム</span>
+      </h2>
+    <div class="block_body clearfix">
+      {% for Product in NewItems %}
+          <div class="product_item clearfix">
+            <div class="productImage">
+              <a href="{{ url('product_detail', {'id': Product.id}) }}" title="{{ Product.name }}">
+                <img src="{{ asset(Product.main_list_image|no_image_product, 'save_image') }}" alt="{{ Product.name }}" loading="lazy" style="max-width: 240px;max-height: 240px;">
+			        </a>
+            </div>
+            <div class="productContents">
+                <h3>
+                    <a href="{{ url('product_detail', {'id': Product.id}) }}" title="{{ Product.name }}">{{ Product.name }}</a>
+                </h3>
+                <p class="sale_price">
+                    <span class="price">
+                      販売価格(税込):  {{ Product.getPrice02IncTaxMin|number_format }} 円
+                    </span>
+                </p>
+            </div>
+        </div>
+      {% endfor %}
+		</div>
+	</div>
+</div>

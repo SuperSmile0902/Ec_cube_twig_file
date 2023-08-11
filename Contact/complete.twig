@@ -1,0 +1,29 @@
+{#
+This file is part of EC-CUBE
+
+Copyright(c) EC-CUBE CO.,LTD. All Rights Reserved.
+
+http://www.ec-cube.co.jp/
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+#}
+{% extends 'default_frame.twig' %}
+
+{% block main %}
+    <div class="ec-pageHeader">
+        <h1>{{ 'お問い合わせ(完了)'|trans }}</h1>
+    </div>
+    <div class="ec-contactCompleteRole">
+        <div class="ec-reportHeading">
+            <h2>{{ 'お問い合わせを送信しました'|trans }}</h2>
+        </div>
+        <p class="ec-reportDescription u-wbr">
+            万一、<wbr>ご確認メールが届かない場合は、<wbr>トラブルの可能性もあります。<br>
+            大変お手数ではございますが<wbr>もう一度お問い合わせいただくか<wbr>、お電話にて<wbr>お問い合わせください。
+        </p>
+        <div class="ec-off4Grid">
+            <div class="ec-off4Grid__cell"><a class="ec-blockBtn--cancel" href="{{ url('homepage') }}">{{'トップページへ'|trans}}</a></div>
+        </div>
+    </div>
+{% endblock %}
