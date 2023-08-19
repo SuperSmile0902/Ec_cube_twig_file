@@ -1,55 +1,361 @@
 <div id="header_wrap">
-    <div id="header" class="clearfix">
-        <div class="header_first_wrap">
-            <div class="header_first_inner">
-                <div id="logo_area">
-                    <a href="{{ url('homepage') }}"><img src="{{ asset('assets/img/common/logo.png') }}" alt="{{ BaseInfo.shopname }}" /></a>
-                </div>
-                <div id="header_utility">
-                    <div id="headerInternalColumn">
-                    </div>
-                    <div class="header_first_right">
-                        <div class="sns_area">
-                           <a href="https://twitter.com/karakonya_ec" target="_blank"><i class="fab fa-twitter"></i></a>
-                           <a href="https://instagram.com/karakonya_official" target="_blank"><i class="fab fa-instagram"></i></a>
-                           <!--a href="" target="_blank" rel="noopener noreferrer"><img src="{{ asset('assets/img/common/line.png') }}" alt=""></a></div-->
-                        <div class="first_menu">
-                            <ul>
-                                <li><a href="{{ url('homepage') }}user_data/beginner"><img src="{{ asset('assets/img/common/begin.png') }}" alt=""><span>初めての方へ</span></a></li>
-                                {#<li><a href="{{ url('homepage') }}user_data/shopping_guide"><img src="{{ asset('assets/img/common/guide.png') }}" alt=""><span>お買い物ガイド</span></a></li>#}
-                                <li><a href="{{ url('mypage_favorite') }}"><img src="{{ asset('assets/img/common/favo.png') }}" alt=""><span>お気に入り</span></a></li>
-                                {% if is_granted('ROLE_USER') %}
-                                  <li><a href="{{ url('mypage') }}"><img src="{{ asset('assets/img/common/register.png') }}" alt=""><span>マイページ</span></a></li>
-                                {% else %}
-                                  <li><a href="{{ url('mypage_login') }}"><img src="{{ asset('assets/img/common/register.png') }}" alt=""><span>登録・ログイン</span></a></li>
-                                {% endif %}
-                                <li><a href="{{ url('cart') }}"><img src="{{ asset('assets/img/common/cart.png') }}" alt=""><span>カート</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="header_second_wrap">
-            <div id="header_navi">
-                <ul>
-                    <li class="head_product">
-                        <a href="{{ url('product_list') }}">PRODUCTS<br><span class="menu_ja">商品一覧</span></a>
-                    </li>
-                    <li class="howtouse">
-                        <a href="{{ url('homepage') }}user_data/how_to_use">HOW TO USE<br><span class="menu_ja">カラコンの使い方</span></a>
-                    </li>
-                    <li class="howtochoose">
-                        <a href="{{ url('homepage') }}user_data/how_to_choose">HOW TO CHOOSE<br><span class="menu_ja">カラコンの選び方</span></a>
-                    </li>
-                    <li class="faq">
-                        <a href="{{ url('homepage') }}user_data/faq">FAQ<br><span class="menu_ja">よくある質問</span></a>
-                    </li>
-                    {#<li class="sale">#}
-                    {#    <a href="{{ url('homepage') }}user_data/sale">SALE<br><span class="menu_ja">セール</span></a>#}
-                    {#</li>#}
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
+	<div id="header" class="clearfix">
+		<div class="header_first_wrap">
+			<div class="header_first_inner">
+				<div
+					class="smart_inner_layout">
+					{# SMART SIDEBAR #}
+					<div id="left" class="overlay">
+						<a href="javascript:void(0)" class="closebtn" onclick="closeLeftNav()">&times;</a>
+						<div class="overlay_left">
+							<div class="overlay-content">
+								<div class="home_title">
+									<img src="{{ asset('assets/img/button/home.png') }}" alt="">
+									<span class="home_txt">
+										サイトメニュー のコピー
+									</span>
+								</div>
+								<div class="smart_menu">
+									<a href="{{ url('product_list') }}" class="a_btn">
+										<span class="menu_ja_smart">
+											商品一覧
+										</span>
+									</a>
+									<a href="{{ url('homepage') }}user_data/how_to_use" class="a_btn">
+										<span class="menu_ja_smart">
+											カラコンの使い方
+										</span>
+									</a>
+								</div>
+								<div class="smart_menu">
+									<a href="{{ url('homepage') }}user_data/how_to_choose" class="a_btn">
+										<span class="menu_ja_smart">
+											カラコンの選び方
+										</span>
+									</a>
+									<a href="{{ url('homepage') }}user_data/faq" class="a_btn">
+										<span class="menu_ja_smart">
+											よくある質問
+										</span>
+									</a>
+								</div>
+								<div class="smart_menu">
+									<a  href="{{ url('homepage') }}user_data/beginner" class="a_btn" >
+										<img src="{{ asset('assets/img/button/begin_pink.png') }}" alt="">
+										<span class="menu_ja_smart">
+											初めての方へ
+										</span>
+									</a>
+									<a  href="{{ url('homepage') }}user_data/shopping_guide" class="a_btn">
+										<img src="{{ asset('assets/img/button/guide_pink.png') }}" alt="">
+										<span class="menu_ja_smart">
+											お買い物ガイド
+										</span>
+									</a>
+								</div>
+								<div class="smart_menu">
+									<a href="{{ url('mypage_favorite') }}" class="a_btn">
+										<img src="{{ asset('assets/img/button/favo_pink.png') }}" alt="">
+										<span class="menu_ja_smart">
+											お気に入り
+										</span>
+									</a>
+									<a href="{{ url('mypage_login') }}" class="a_btn">
+										<img src="{{ asset('assets/img/button/register_pink.png') }}" alt="">
+										<span class="menu_ja_smart">
+											登録・ログイン
+										</span>
+									</a>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<span class="openNav" onclick="openLeftNav()"><img src="/html/template/default/assets/img/button/g_nav_btn.png" alt="キーワードから探す"></span>
+					{# SMART SIDEBAR #}
+					<div id="logo_area">
+						<a href="{{ url('homepage') }}">
+							<img src="{{ asset('assets/img/common/logo.png') }}" alt="{{ BaseInfo.shopname }}"/>
+						</a>
+					</div>
+
+					<div
+						class="smart_icon-button">
+						{# SEARCH  SAMRT RESPONSIVe #}
+						<div id="right" class="right_overlay">
+							<a href="javascript:void(0)" class="right_closebtn" onclick="closeRightNav()">&times;</a>
+							<div class="right_overlay-content">
+								<div id="smart_search_area">
+									<h2 class="search_h2">SEARCH<span class="search_h2_ja">条件で探す</span>
+									</h2>
+									<div class="block_body">
+										<form name="search_form" id="search_form" method="get" action="/products/list">
+											<dl class="formlist key_search">
+												<dt><img src="/html/template/default/assets/img/title/keyword_search.png" alt="キーワードから探す"><span class="search-c">キーワードから探す</span>
+												</dt>
+												<dd>
+													<input type="search" name="name" maxlength="50" class="box140">
+													<input type="submit" value="検索" class="search_btn">
+												</dd>
+											</dl>
+											<input type="hidden" name="category_id"><br>
+											<dl class="formlist category">
+												<dt><img src="/html/template/default/assets/img/title/frequency_search.png" alt="キーワードから探す"><span class="search-c">度あり・度なしで探す</span>
+												</dt>
+												<dd>
+													<a href="" value="111">度あり</a>
+												</dd>
+												<dd>
+													<a href="" value="112">度なし</a>
+												</dd>
+											</dl>
+											<dl class="formlist category">
+												<dt><img src="/html/template/default/assets/img/title/span_search.png" alt="装用期間で探す"><span class="search-c">装用期間で探す</span>
+												</dt>
+												<dd>
+													<a href="" value="114">ワンデー(1day)</a>
+												</dd>
+
+											</dl>
+											<dl class="formlist color_radio category">
+												<dt><img src="/html/template/default/assets/img/title/color_search.png" alt="カラーで探す"><span class="search-c">カラーで探す</span>
+												</dt>
+												<dd>
+													<a href="" value="118">
+														<img src="/html/template/default/assets/img/item/brown.png" alt="ブラウン">
+													</a>
+												</dd>
+												<dd>
+													<a href="" value="119">
+														<img src="/html/template/default/assets/img/item/black.png" alt="ブラック">
+													</a>
+												</dd>
+												<dd>
+													<a href="" value="120">
+														<img src="/html/template/default/assets/img/item/gray.png" alt="グレー">
+													</a>
+												</dd>
+												<dd>
+													<a href="" value="121">
+														<img src="/html/template/default/assets/img/item/beige.png" alt="ベージュ">
+													</a>
+												</dd>
+												<dd>
+													<a href="" value="122">
+														<img src="/html/template/default/assets/img/item/pink.png" alt="ピンク">
+													</a>
+												</dd>
+												<dd>
+													<a href="" value="123">
+														<img src="/html/template/default/assets/img/item/green.png" alt="グリーン">
+													</a>
+												</dd>
+												<dd>
+													<a href="" value="124">
+														<img src="/html/template/default/assets/img/item/blue.png" alt="ブルー">
+													</a>
+												</dd>
+												<dd>
+													<a href="" value="125">
+														<img src="/html/template/default/assets/img/item/purple.png" alt="パープル">
+													</a>
+												</dd>
+											</dl>
+
+
+											<dl class="formlist category">
+												<dt><img src="/html/template/default/assets/img/title/dia_search.png" alt="レンズ直径で探す"><span class="search-c">BCで探す</span>
+												</dt>
+												<dd>
+													<a href="" value="163">8.6</a>
+												</dd>
+												<dd>
+													<a href="" value="165">8.7</a>
+												</dd>
+												<dd>
+													<a href="" value="164">8.8</a>
+												</dd>
+											</dl>
+
+
+											<dl class="formlist category">
+												<dt><img src="/html/template/default/assets/img/title/dia_search.png" alt="レンズ直径で探す"><span class="search-c">レンズ直径で探す</span>
+												</dt>
+												<dd>
+													<a href="" value="127">14.0mm</a>
+												</dd>
+												<dd>
+													<a href="" value="129">14.2mm</a>
+												</dd>
+												<dd>
+													<a href="" value="132">14.5mm</a>
+												</dd>
+											</dl>
+										</form>
+									</div>
+									<h2 class="search_h2 brand_h2">BRAND<span class="search_h2_ja">ブランドから探す</span>
+									</h2>
+									<div class="block_body">
+										<ul class="brand_block category">
+											<li class="active">
+												<a href="" value="145" class="active">Claire</a>
+											</li>
+											<li class="active">
+												<a href="" value="178" class="active">Dreamy</a>
+											</li>
+											<li>
+												<a href="" value="148">IT EYES</a>
+											</li>
+											<li>
+												<a href="" value="146">MAX COLOR 1day</a>
+											</li>
+											<li>
+												<a href="" value="169">SJ</a>
+											</li>
+										</ul>
+									</div>
+									<!-- モデル一覧ここに入る -->
+								</div>
+							</div>
+						</div>
+						<span class="right_openNav" onclick="openRightNav()"><img src="/html/template/default/assets/img/button/search_btn.png" alt="キーワードから探す"></span>
+						{# SEARCH SMART RESPONSIVE #}
+						<div class="right_cart">
+							<a href="http://localhost/cart">
+								<img src="/html/template/default/assets/img/button/cart_btn.png" alt="">
+							</a>
+						</div>
+
+					</div>
+				</div>
+
+
+				<div id="header_utility">
+					<div id="headerInternalColumn"></div>
+					<div class="header_first_right">
+						<div class="sns_area">
+							<div class="sns_icon-button">
+								<a href="https://twitter.com/karakonya_ec" target="_blank">
+									<i class="fab fa-twitter"></i>
+								</a>
+								<a href="https://instagram.com/karakonya_official" target="_blank">
+									<i class="fab fa-instagram"></i>
+								</a>
+							</div>
+							<!--a href="" target="_blank" rel="noopener noreferrer"><img src="{{ asset('assets/img/common/line.png') }}" alt=""></a></div-->
+							<div class="first_menu">
+								<ul>
+									<li>
+										<a href="{{ url('homepage') }}user_data/beginner">
+											<img src="{{ asset('assets/img/common/begin.png') }}" alt="">
+											<span>
+												初めての方へ
+											</span>
+										</a>
+									</li>
+									{#<li><a href="{{ url('homepage') }}user_data/shopping_guide"><img src="{{ asset('assets/img/common/guide.png') }}" alt=""><span>お買い物ガイド</span></a></li>#}
+									<li>
+										<a href="{{ url('mypage_favorite') }}">
+											<img src="{{ asset('assets/img/common/favo.png') }}" alt="">
+											<span>
+												お気に入り
+											</span>
+										</a>
+									</li>
+									{% if is_granted('ROLE_USER') %}
+										<li>
+											<a href="{{ url('mypage') }}">
+												<img src="{{ asset('assets/img/common/register.png') }}" alt="">
+												<span>
+													マイページ
+												</span>
+											</a>
+										</li>
+									{% else %}
+										<li>
+											<a href="{{ url('mypage_login') }}">
+												<img src="{{ asset('assets/img/common/register.png') }}" alt="">
+												<span>
+													登録・ログイン
+												</span>
+											</a>
+										</li>
+									{% endif %}
+									<li>
+										<a href="{{ url('cart') }}">
+											<img src="{{ asset('assets/img/common/cart.png') }}" alt="">
+											<span>
+												カート
+											</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="header_second_wrap">
+				<div id="header_navi">
+					<ul>
+						<li class="head_product">
+							<a href="{{ url('product_list') }}">
+								PRODUCTS
+								<br>
+								<span class="menu_ja">
+									商品一覧
+								</span>
+							</a>
+						</li>
+						<li class="howtouse">
+							<a href="{{ url('homepage') }}user_data/how_to_use">
+								HOW TO USE
+								<br>
+								<span class="menu_ja">
+									カラコンの使い方
+								</span>
+							</a>
+						</li>
+						<li class="howtochoose">
+							<a href="{{ url('homepage') }}user_data/how_to_choose">
+								HOW TO CHOOSE
+								<br>
+								<span class="menu_ja">
+									カラコンの選び方
+								</span>
+							</a>
+						</li>
+						<li class="faq">
+							<a href="{{ url('homepage') }}user_data/faq">
+								FAQ
+								<br>
+								<span class="menu_ja">
+									よくある質問
+								</span>
+							</a>
+						</li>
+						{#<li class="sale">#}
+					{#    <a href="{{ url('homepage') }}user_data/sale">SALE<br><span class="menu_ja">セール</span></a>#}
+						{#</li>#}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	 <script>
+					function openLeftNav() {
+					    document.getElementById("left").style.width = "100%";
+					}
+					
+					function closeLeftNav() {
+					    document.getElementById("left").style.width = "0%";
+					}
+					
+					function openRightNav() {
+					    document.getElementById("right").style.width = "100%";
+					}
+					
+					function closeRightNav() {
+					    document.getElementById("right").style.width = "0%";
+					}
+					</script>
